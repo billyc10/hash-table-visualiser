@@ -1,8 +1,28 @@
+
 .HashFunction {
     border-style: solid;
     border-width: 1px;
     padding: 10px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0px;
+}
+
+.Column {
+    display: flex;
+    flex-direction: column;
+}
+
+.Hash {
+    font-size: 18px;
+    padding-left: 10px;
 }
 
 .CodeSnippet {
@@ -11,5 +31,25 @@
     width: fit-content;
     padding: 0px 20px;
     background-color: gainsboro;
-    
+}
+
+.Options {
+    width: fit-content;
+}
+
+.HashSizeText {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+input[name="sizeInput"] {
+    width: 30px;
+}
+
+input[name="messageInput"] {
+    width: 100px;
+}
+
+button {
+    margin-left: 10px;
 }

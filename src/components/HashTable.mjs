@@ -1,13 +1,13 @@
 export default class HashTable {
     constructor(size = 5, hashing = 'closed') {
-      this.size = size;
+      this.size = Number(size);
       this.hashing = hashing;
       switch(this.hashing){
         case 'open':
-          this.array = [...Array(size)].map(e => Array());
+          this.array = [...Array(this.size)].map(e => Array());
           break;
         default:
-          this.array = Array(size);
+          this.array = Array(this.size);
       }
     }
   
@@ -32,7 +32,7 @@ export default class HashTable {
       this.size = newArray.length;
     }
   
-    hashFunction(item, m) {
+    static hashFunction(item, m) {
         let total = 0;
     
         for (let i = 0; i < item.length; i++) {

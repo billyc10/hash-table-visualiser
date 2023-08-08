@@ -1,0 +1,19 @@
+.ArrayCell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    outline: 1px solid;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 150px;
+    height: 28px;
+}
+
+.ArrayRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.LiveArray {
+    width: fit-content;
+}

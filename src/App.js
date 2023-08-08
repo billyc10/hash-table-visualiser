@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import LiveArray from './components/LiveArray/LiveArray';
+
+class HashTable {
+  constructor(size) {
+    this.size = size;
+    this.array = [...Array(size)].map(e => Array());
+  }
+
+  insert(item, pos) {
+    if (pos > this.size) {
+      return this.array
+    } else {
+      this.array[pos].push(item);
+      return this.array;
+    }
+  }
+
+  assign(newArray) {
+    this.array = newArray;
+    this.size = newArray.length;
+  }
+}
 
 function App() {
+  const hashTable = new HashTable(4);
+  hashTable.assign([['Billy'], ['Mark', 'Tom', 'Roberto'], [], ['Edward']]);
+  console.log(hashTable.array);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LiveArray array={hashTable.array} className="LiveArray"></LiveArray>
+      hello
     </div>
   );
 }

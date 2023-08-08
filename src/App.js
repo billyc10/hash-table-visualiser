@@ -4,25 +4,21 @@ import LiveArray from './components/LiveArray/LiveArray';
 import HashFunction from './components/HashFunction/HashFunction';
 import HashTable from './components/HashTable.mjs';
 
+let hashTable;
+
 function App() {
   const [hashTableArray, setHashTableArray] = useState({});
   const [message, setMessage] = useState('Hash me!');
   const [hashNumber, setHashNumber] = useState(5);
-  let hashTable;
 
   const createHashTable = () => {
     hashTable = new HashTable(hashNumber);
     setHashTableArray(hashTable.array);
   }
 
-  // setHashTable(new HashTable(5));
-  // hashTable.assign([,,,,,])
-  // hashTable.hashToTable('hi');
-
-
   const handleAddToTable = () => {
-    hashTable.assign([1,2, 3,4,5]);
-    console.log(hashTable.array);
+    hashTable.hashToTable(message);
+    setHashTableArray([...hashTable.array]);
   }
 
   return (

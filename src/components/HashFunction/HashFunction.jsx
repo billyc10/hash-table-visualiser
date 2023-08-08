@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import HashTable from '../HashTable.mjs';
 import './HashFunction.css'
+import { hasUnreliableEmptyValue } from '@testing-library/user-event/dist/utils';
 
 const HashFunction = (props) => {
     const {message, setMessage, hashNumber, setHashNumber, handleAddToTable} = props;
@@ -11,7 +12,7 @@ const HashFunction = (props) => {
         setMessage(e.target.value);
     }
     const handleGenerateHash = (e) => {
-        setHash(HashTable.hashFunction(message, hashNumber));
+        setHash(HashTable.hashFunction(message, hashNumber).toString());
     }
     
     const handleNumberChange = (e) => {

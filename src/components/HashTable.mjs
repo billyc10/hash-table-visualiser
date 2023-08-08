@@ -49,7 +49,7 @@ export default class HashTable {
           return check;
       }
   
-      let index = this.hashFunction(item, this.size);
+      let index = HashTable.hashFunction(item, this.size);
       switch(this.hashing){
         case 'open':
           this.array[index].push(item);
@@ -73,7 +73,7 @@ export default class HashTable {
     }
   
     lookup(item) {
-      let index = this.hashFunction(item, this.size);
+      let index = HashTable.hashFunction(item, this.size);
       
       if (this.array[index] === undefined || this.array[index].length === 0) {
         return false;

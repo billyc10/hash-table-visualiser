@@ -2,6 +2,7 @@ import './LiveArray.css'
 
 const LiveArray = (props) => {
     const arrayValues = props.array;
+    console.log(arrayValues);
     const hashing = props.hashing;
     const arraySize = arrayValues.length;
 

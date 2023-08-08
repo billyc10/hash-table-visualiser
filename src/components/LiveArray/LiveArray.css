@@ -1,3 +1,8 @@
+.LiveArray {
+    width: fit-content;
+    margin: 10px;
+}
+
 .ArrayCell {
     display: flex;
     flex-direction: column;
@@ -9,11 +14,15 @@
     height: 28px;
 }
 
+.ArrayIndex {
+    outline: 1px solid;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 28px;
+    height: 28px;
+}
+
 .ArrayRow {
     display: flex;
     flex-direction: row;
-}
-
-.LiveArray {
-    width: fit-content;
 }

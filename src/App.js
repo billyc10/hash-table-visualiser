@@ -1,36 +1,17 @@
 import './App.css';
 import LiveArray from './components/LiveArray/LiveArray';
-
-class HashTable {
-  constructor(size) {
-    this.size = size;
-    this.array = [...Array(size)].map(e => Array());
-  }
-
-  insert(item, pos) {
-    if (pos > this.size) {
-      return this.array
-    } else {
-      this.array[pos].push(item);
-      return this.array;
-    }
-  }
-
-  assign(newArray) {
-    this.array = newArray;
-    this.size = newArray.length;
-  }
-}
+import HashFunction from './components/HashFunction/HashFunction';
+import HashTable from './components/HashTable.mjs';
 
 function App() {
-  const hashTable = new HashTable(4);
-  hashTable.assign([['Billy'], ['Mark', 'Tom', 'Roberto'], [], ['Edward']]);
+  const hashTable = new HashTable(5);
+  hashTable.assign(['Billy', 'Roberto', 'Mark', , 'Edward']);
   console.log(hashTable.array);
 
   return (
     <div className="App">
-      <LiveArray array={hashTable.array} className="LiveArray"></LiveArray>
-      hello
+      <LiveArray array={hashTable.array} hashing={hashTable.hashing} className="LiveArray"></LiveArray>
+      <HashFunction/>
     </div>
   );
 }

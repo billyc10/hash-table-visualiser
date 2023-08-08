@@ -3,7 +3,7 @@ import HashTable from '../HashTable.mjs';
 import './HashFunction.css'
 
 const HashFunction = (props) => {
-    const {message, setMessage, hashNumber, setHashNumber} = props;
+    const {message, setMessage, hashNumber, setHashNumber, handleAddToTable} = props;
     const [hash, setHash] = useState('');
     const [hashNumberDisplay, setHashNumberDisplay] = useState(5);
 
@@ -65,11 +65,14 @@ function myHash(message, m) {
                 </div>
                 
                     {hash ?
-                        <div className='Row'>
-                            <div>
-                                Hash value: 
+                        <div className='Column'>
+                            <div className='Row'>
+                                <div>
+                                    Hash value: 
+                                </div>
+                                <div className='Hash'> {hash} </div>
                             </div>
-                            <div className='Hash'> {hash} </div>
+                            <button type="submit" onClick={handleAddToTable}>Add to table</button>
                         </div>
                         : null
                     }

@@ -52,9 +52,6 @@ function App() {
             : null
           }
         </div>
-        <div className="Row">
-          Test
-        </div>
       </div>
     </div>
   );

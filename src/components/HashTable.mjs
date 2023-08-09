@@ -96,6 +96,8 @@ export default class HashTable {
             while (index !== finalIndex) {
               if (this.array[index] === item) {
                 return index;
+              } else if (this.array[index] === undefined) {
+                return false;
               }
               index = (index + 1) % this.size;
             }

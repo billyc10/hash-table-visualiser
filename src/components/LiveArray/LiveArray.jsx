@@ -5,9 +5,8 @@ const LiveArray = (props) => {
     console.log(arrayValues);
     const hashing = props.hashing || 'closed';
     const arraySize = arrayValues.length;
-    const highlightIndex = props.highlightIndex || -1;
-    const highlightType = props.highlightType || 'none';
-
+    const highlightIndex = props.highlightIndex;
+    const highlightType = props.highlightType;
     console.log(highlightType);
 
     console.log(highlightIndex);

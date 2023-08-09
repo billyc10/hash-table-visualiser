@@ -26,3 +26,11 @@
     display: flex;
     flex-direction: row;
 }
+
+.Highlight {
+    background-color: #FAFAD2;
+}
+
+.HighlightDark {
+    background-color: #90EE90;
+}

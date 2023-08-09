@@ -10,6 +10,8 @@ function App() {
   const [hashTableArray, setHashTableArray] = useState({});
   const [message, setMessage] = useState('Hash me!');
   const [hashNumber, setHashNumber] = useState(5);
+  const [highlightIndex, setHighlightIndex] = useState(-1);
+  const [highlightType, setHighlightType] = useState('none');
 
   const createHashTable = () => {
     hashTable = new HashTable(hashNumber);
@@ -17,27 +19,43 @@ function App() {
   }
 
   const handleAddToTable = () => {
-    hashTable.hashToTable(message);
+    const insertedPosition = hashTable.hashToTable(message);
     setHashTableArray([...hashTable.array]);
+    setHighlightIndex(insertedPosition);
+    setHighlightType('dark');
+  }
+
+  const generateHashCallback = (hash) => {
+    setHighlightIndex(hash);
+    setHighlightType('light');
   }
 
   return (
-    <div className="App Row">
-      <HashFunction
-        createHashTable={createHashTable}
-        message={message}
-        setMessage={setMessage}
-        hashNumber={hashNumber}
-        setHashNumber={setHashNumber}
-        handleAddToTable={handleAddToTable}
-      />
-      { hashTableArray?
-        <LiveArray className="LiveArray"
-          array={hashTableArray}
-          // hashing={hashTable.hashing}
-        />
-        : null
-      }
+    <div className="App">
+      <div className="column">
+        <div className="Row">
+          <HashFunction
+            createHashTable={createHashTable}
+            message={message}
+            setMessage={setMessage}
+            hashNumber={hashNumber}
+            setHashNumber={setHashNumber}
+            handleAddToTable={handleAddToTable}
+            generateHashCallback={generateHashCallback}
+          />
+          { hashTableArray?
+            <LiveArray className="LiveArray"
+              array={hashTableArray}
+              highlightIndex={highlightIndex}
+              highlightType={highlightType}
+            />
+            : null
+          }
+        </div>
+        <div className="Row">
+          Test
+        </div>
+      </div>
     </div>
   );
 }

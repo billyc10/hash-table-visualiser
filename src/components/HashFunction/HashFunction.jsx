@@ -4,26 +4,23 @@ import './HashFunction.css'
 import { hasUnreliableEmptyValue } from '@testing-library/user-event/dist/utils';
 
 const HashFunction = (props) => {
-    const {message, setMessage, hashNumber, setHashNumber, handleAddToTable} = props;
+    const {message, setMessage, hashNumber, setHashNumber, handleAddToTable, generateHashCallback} = props;
     const [hash, setHash] = useState('');
-    const [hashNumberDisplay, setHashNumberDisplay] = useState(5);
 
     const handleMessageChange = (e) => {
         setMessage(e.target.value);
     }
     const handleGenerateHash = (e) => {
-        setHash(HashTable.hashFunction(message, hashNumber).toString());
+        const hash = HashTable.hashFunction(message, hashNumber);
+        setHash(hash.toString());
+        generateHashCallback(hash);
     }
     
     const handleNumberChange = (e) => {
         let num = e.target.value;
         if (num > 21) { num = 21 }
         else if (num < 1) { num = 1}
-        setHashNumberDisplay(num);
-    }
-    const handleSetNumber = (e) => {
-        setHashNumber(hashNumberDisplay);
-        console.log(hashNumber);
+        setHashNumber(num);
     }
 
     const Preview = () => {
@@ -40,10 +37,15 @@ function myHash(message, m) {
         `
 
         return (
-            <div className='CodeSnippet'> 
-                <div className='HashSizeText'> Hash size: m = {hashNumber}</div>
-                <code><pre>{hashingAlgorithm}</pre></code>
+            <div className="Text">
+                <div> Basic hash function sums up each character's ASCII code </div>
+                <div> and performs modulo division by hash size 'm' </div>
+                <div className='CodeSnippet'> 
+                    <div className='HashSizeText'> Hash size: m = {hashNumber}</div>
+                    <code><pre>{hashingAlgorithm}</pre></code>
+                </div>
             </div>
+            
         )
     }
 
@@ -51,11 +53,11 @@ function myHash(message, m) {
         <div className='HashFunction'>
             <Preview/>
             <div className='Options Column'>
+                <text className="Heading"> Hash Table Options </text>
                 <div className='Row'>
                     <label>
-                        Hash size: <input type="number" name="sizeInput" onChange={handleNumberChange} value={hashNumberDisplay} />
+                        Hash size: <input type="number" name="sizeInput" onChange={handleNumberChange} value={hashNumber} />
                     </label>
-                    <button type="submit" onClick={handleSetNumber}>Set Length</button>
                     <button type="submit" onClick={props.createHashTable}>Create New Table</button>
                 </div>
                 <div className='Row'>

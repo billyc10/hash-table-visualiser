@@ -3,8 +3,14 @@ import './LiveArray.css'
 const LiveArray = (props) => {
     const arrayValues = props.array;
     console.log(arrayValues);
-    const hashing = props.hashing;
+    const hashing = props.hashing || 'closed';
     const arraySize = arrayValues.length;
+    const highlightIndex = props.highlightIndex || -1;
+    const highlightType = props.highlightType || 'none';
+
+    console.log(highlightType);
+
+    console.log(highlightIndex);
 
     const ArrayRow = (props) => {
         let arrayList;
@@ -23,8 +29,24 @@ const LiveArray = (props) => {
             // Closed hashing only allows one entry per index
             arrayList = <div className="ArrayCell"> {props.values} </div>
         }
+
+        let indexClassName = "ArrayRow";
+        if (props.highlight) {
+            console.log(highlightType);
+            switch(highlightType) {
+                case 'light':
+                    indexClassName = "ArrayRow Highlight";
+                    break
+                case 'dark':
+                    indexClassName = "ArrayRow HighlightDark";
+                    break
+                default:
+                    indexClassName = "ArrayRow";
+            }
+        }
+
         return (
-            <div className="ArrayRow">
+            <div className={indexClassName}>
                 <div className="ArrayIndex"> {props.index} </div>
                 {arrayList} 
             </div>
@@ -34,7 +56,7 @@ const LiveArray = (props) => {
     const FullArray = () => {
         const rows = [];
         for (var i = 0; i < arraySize; i++) {
-            rows.push(<ArrayRow key={i} index={i} values={arrayValues[i]}/>)
+            rows.push(<ArrayRow key={i} index={i} values={arrayValues[i]} highlight={i===highlightIndex}/>)
         }
 
         return <div className="LiveArray"> {rows} </div>;
